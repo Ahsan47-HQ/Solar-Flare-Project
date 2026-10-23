@@ -50,3 +50,37 @@ observation interval in training. The region and chronological splits have zero
 such test/train overlaps. These are structural leakage measurements; whether
 they inflate model scores must be measured by training the same model under
 each split.
+
+## Phase 1 cleaning and temporal features
+
+Run `.\.sfd\Scripts\python.exe data_cleaning.py` from the repository root. This
+calls the feature definitions in `temporal_features.py` and scans each full
+series once. `data/phase1/status.json` marks a completed build. The outputs are:
+
+| Path | Meaning |
+| --- | --- |
+| `data/phase1/feature_index.csv` | One row per window, with path, label, region, partition, and all three split assignments |
+| `data/phase1/baseline.npy` | Shape `(331185, 24)`; final observed value of each magnetic parameter |
+| `data/phase1/temporal.npy` | Shape `(331185, 120)`; 1h and 3h lags, 3h rate of change, and final 3h rolling mean and standard deviation for each parameter |
+| `data/phase1/feature_columns.json` | Column names in array order |
+| `data/phase1/cleaning_report.json` | Missing-value, class-distribution, and training-only IQR outlier counts |
+| `data/phase1/normalization_<split>_<set>.json` | Training-only median imputation and z-score parameters for each split and each array |
+
+The row at index `i` in both NumPy arrays belongs to row `i` of
+`feature_index.csv`. Load arrays with `np.load(path, mmap_mode="r")` to avoid
+bringing all rows into memory. The `baseline` feature set uses `baseline.npy`;
+the `baseline + temporal` set concatenates the two arrays. Use
+`data_cleaning.transform_features(values, stats)` with the matching split's
+normalization JSON for each array. Apply those same saved parameters to train,
+validation, and test rows. Do not fit normalization on the full arrays.
+
+The 24 inputs are magnetic measurements (`TOTUSJH` through `R_VALUE`). Flare
+annotation, X-ray, and quality columns are excluded from predictors. Features
+are computed only from each window's 12-hour observation interval. Missing
+lags remain NaN until training-only imputation. Rolling summaries require at
+least eight valid readings. The IQR outlier rule is descriptive; no row or
+value was removed or clipped because extreme values may be relevant to flares.
+
+Across 2,879,658 unique full-series observations, 6,082,002 of 69,111,792
+magnetic cells (8.8%) are missing or nonfinite. The pre-sliced binary task has
+6,234 `FL` windows out of 331,185 (1.88%).
