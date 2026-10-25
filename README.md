@@ -1,8 +1,8 @@
 # Solar Flare Project
 
-This project studies how reliably machine-learning models can identify solar-flare activity from magnetic measurements of solar active regions. Its research aim, described in the team's *Investigating the Early-Warning Capability and Generalization of Machine Learning Models for Solar Flare Forecasting* synopsis, is to examine useful warning time, temporal precursors, and performance on new regions and later observations. The current repository implements a binary SWAN-SF window-classification pipeline and model code; experiments for distinct forecast horizons remain future work.
+This project studies how reliably machine-learning models can identify solar-flare activity from magnetic measurements of solar active regions. Its research aim, described in the team's *Investigating the Early-Warning Capability and Generalization of Machine Learning Models for Solar Flare Forecasting* synopsis, is to examine useful warning time, temporal precursors, and performance on new regions and later observations. The repository implements a binary SWAN-SF window-classification pipeline, classical and neural model baselines, and forecast-horizon evaluation code comparing short (6h, 12h) and long (24h, 48h) warning windows with space-weather skill score quantification (TSS, HSS).
 
-**Project status:** Phase 1 extraction, leakage analysis, cleaning, and feature generation are implemented and have documented measurements. Phase 2 has a manually triggered acquisition notebook and code for Logistic Regression, Random Forest, XGBoost, and an artificial neural network (ANN). The checked-in Phase 2 reports do not yet contain verified full-data model scores or successful model-reload results. This checkout does not contain the generated dataset or model binaries.
+**Project status:** Phase 1 extraction, leakage analysis, cleaning, and feature generation are implemented and have documented measurements. Phase 2 provides the acquisition notebook and classical, XGBoost, and ANN model code. Phase 3 implements short-horizon (`short_horizon.py`, 6h/12h) and long-horizon (`long_horizon.py`, 24h/48h) forecasting, systematic feature-space comparisons (`feature_comparison.py`, 24-feature baseline vs. 144-feature temporal), and shared evaluation utilities providing True Skill Statistic (TSS) and Heidke Skill Score (HSS) computation (`phase3_common.py`). Checked-in report templates are under `reports/phase3/`. This checkout does not contain the generated dataset or model binaries.
 
 ## Research questions and current task
 
@@ -17,7 +17,7 @@ The implemented task uses the supplied SWAN-SF pre-sliced windows. Each example 
 | Phase 1: data preparation | Seven original SWAN-SF archives | [Extraction](extract_dataset.py), [leakage analysis](leakage_analysis.py), [cleaning](data_cleaning.py), and [temporal features](temporal_features.py); manifests, split assignments, arrays, and normalization metadata under `data/` | Implemented; measurements are documented in [DATASET.md](DATASET.md). Generated files are absent from this checkout. |
 | Phase 2A: acquisition | Official Harvard Dataverse metadata and archive downloads | [Acquisition notebook](notebooks/phase2a_dataset_acquisition.ipynb) with live metadata comparison, explicit download enablement, integrity checks, and persistent storage | Notebook implemented; no Colab run or local archives are evidenced here. |
 | Phase 2: model development | Phase 1 aligned arrays and authoritative splits | [Classical baselines](classical_models.py), [XGBoost](xgboost_model.py), [ANN](ann_model.py), shared model utilities, synthetic tests, and artifact audit tools | Code and offline tests exist; full-data scores, Drive backups, and model reloads remain unverified in [Phase 2 reports](reports/phase2/classical_model_results.md). |
-| Horizon and precursor study | Full active-region series and a defined forecast target for each horizon | Proposed comparisons of warning horizons, temporal patterns, and model generalization | Planned in the synopsis; no horizon-specific dataset or results are present in this branch. |
+| Phase 3: horizon and precursor study | Phase 1 aligned arrays, split assignments, and forecast horizon specifications | [Short horizon](short_horizon.py) (6h, 12h), [long horizon](long_horizon.py) (24h, 48h), [feature comparison](feature_comparison.py), and [shared metrics/loaders](phase3_common.py); report templates under `reports/phase3/` | Implemented on branch `phase3`; defines 32 experiment configurations across 4 horizons, 2 splits, 2 feature sets, and classical models with TSS and HSS skill scores. |
 
 The stages connect as follows:
 
@@ -27,7 +27,8 @@ Official SWAN-SF archives
   → leakage analysis and shared split assignments
   → aligned Phase 1 arrays, feature names, and training-fitted normalization
   → model training and validation-based threshold selection
-  → held-out evaluation, saved artifacts, backup, and reload audit
+  → forecast-horizon evaluation (6h, 12h, 24h, 48h) and precursor feature comparison
+  → held-out evaluation, skill score analysis (TSS, HSS), and cross-phase result export
 ```
 
 ## Dataset and scientific safeguards
@@ -42,15 +43,23 @@ The Phase 1 feature builders use measurements from each observation window, excl
 
 ## Models, evaluation, and available results
 
-| Model | Implementation | Imbalance and selection approach | Artifact family |
+| Model / Stage | Implementation | Imbalance and selection approach | Artifact family |
 | --- | --- | --- | --- |
 | Logistic Regression and Random Forest | [classical_models.py](classical_models.py) | Class weights by default; validation-based threshold | `data/phase2/classical/` |
 | XGBoost classifier | [xgboost_model.py](xgboost_model.py) | Training-class ratio weight; validation-based early stopping and threshold | `data/phase2/xgboost/` |
 | ANN classifier | [ann_model.py](ann_model.py) | Class weights; validation PR-AUC early stopping and threshold | `data/phase2/ann/` |
+| Short-horizon forecasting (6h, 12h) | [short_horizon.py](short_horizon.py) | Class weights; validation threshold tuning; PR-AUC, TSS, and HSS | `data/phase3/short_horizon/` |
+| Long-horizon forecasting (24h, 48h) | [long_horizon.py](long_horizon.py) | Class weights; validation threshold tuning; PR-AUC, TSS, and HSS | `data/phase3/long_horizon/` |
+| Feature-set comparison (all horizons) | [feature_comparison.py](feature_comparison.py) | Random Forest matrix across 6h/12h/24h/48h comparing 24 vs. 144 features | `data/phase3/feature_comparison/` |
 
-The supported feature sets are `baseline` and `baseline_temporal`. All model scripts read the shared Phase 1 split assignments and split-specific normalization files. Their evaluations record confusion matrix, precision, recall, F1, average precision (PR-AUC), ROC-AUC where defined, class counts, prevalence, and threshold, with validation and test results kept separate. Average precision and `FL` recall are especially relevant given the rare positive class. Random-split scores, if generated, are diagnostics rather than evidence of generalization. The synopsis also proposes TSS and HSS; the current model reports do not establish those measures.
+The supported feature sets are `baseline` (24 magnetic moments) and `baseline_temporal` (144 features including 120 temporal derivatives and rolling window statistics). All model scripts read the shared Phase 1 split assignments and split-specific normalization files. Their evaluations record confusion matrix, precision, recall, F1, average precision (PR-AUC), ROC-AUC where defined, class counts, prevalence, and threshold, with validation and test results kept separate.
 
-**No model ranking or numerical performance claim is available yet.** The tracked [classical results table](reports/phase2/classical_model_results.md) has blank scores, and the [experiment manifest](reports/phase2/experiment_manifest.json) marks the study incomplete. The [reload report](reports/phase2/model_reload_verification.md) and [artifact inventory](reports/phase2/artifact_inventory.json) do not verify saved models. See [Phase 2 execution and recovery](PHASE2.md) for the pending backup and audit procedure. Synthetic unit-test success does not replace evaluation on SWAN-SF.
+Phase 3 operationalizes the solar-flare skill scores identified as missing in Phase 2:
+- **True Skill Statistic (TSS / Hanssen-Kuipers discriminant)**: $\text{TSS} = \text{POD} - \text{POFD} = \frac{TP}{TP + FN} - \frac{FP}{FP + TN}$. Bounded in $[-1.0, +1.0]$, giving $0.0$ for random chance. Because it evaluates positive and negative classes symmetrically, it is unaffected by the extreme 1.88% class prevalence.
+- **Heidke Skill Score (HSS)**: $\text{HSS} = \frac{2(TP \cdot TN - FP \cdot FN)}{(TP+FN)(FN+TN) + (TP+FP)(FP+TN)}$. Evaluates accuracy improvement over random chance aligned with prior marginal frequencies.
+- **Precursor Feature Advantage**: $\Delta \text{Metric} = \text{Metric}_{\text{baseline\_temporal}} - \text{Metric}_{\text{baseline}}$, measured across 6h, 12h, 24h, and 48h to evaluate whether magnetic evolution precursor features improve early-warning reliability.
+
+**No model ranking or numerical performance claim is available yet.** The tracked [classical results table](reports/phase2/classical_model_results.md) and [Phase 3 report templates](reports/phase3/) contain placeholder structures; the [experiment manifest](reports/phase2/experiment_manifest.json) marks the study incomplete. The [reload report](reports/phase2/model_reload_verification.md) and [artifact inventory](reports/phase2/artifact_inventory.json) do not verify saved models. See [Phase 2 execution and recovery](PHASE2.md) for the pending backup and audit procedure. Synthetic unit-test success does not replace evaluation on SWAN-SF.
 
 ## Repository map
 
@@ -68,8 +77,13 @@ xgboost_model.py            XGBoost classifier
 ann_model.py                Neural-network classifier
 phase2_model_common.py      Shared Phase 2 artifact/evaluation helpers
 phase2_artifacts.py         Backup, inventory, and model-reload audit
-reports/phase2/             Checked-in report templates and audit outputs
-tests/                      Small synthetic tests for data/model contracts
+short_horizon.py            Phase 3 short warning horizons (6h, 12h)
+long_horizon.py             Phase 3 long warning horizons (24h, 48h)
+feature_comparison.py       Phase 3 baseline vs temporal feature comparison
+phase3_common.py            Shared Phase 3 utilities, TSS/HSS metrics, artifact scanner
+reports/phase2/             Checked-in Phase 2 report templates and audit outputs
+reports/phase3/             Checked-in Phase 3 report templates and horizon summaries
+tests/                      Synthetic unit and contract tests (56 tests)
 data/                       Generated data and model artifacts; ignored by Git
 ```
 
@@ -101,13 +115,29 @@ Run the commands below from the repository root on the `Prasiddhi` branch. They 
 
    Each command trains its model family and writes a run directory under `data/phase2/` with model, configuration, feature order, normalization metadata, metrics, and completion status. Use `--split time_split` for chronological evaluation and `--features baseline_temporal` for the combined features. The scripts also offer `--smoke-max-per-subset 100` for a small diagnostic run; its metrics must not be reported as full-data results. Inspect `--help` before changing seeds or model settings. Full-data training is better suited to a checked Colab runtime with persistent artifact backups.
 
-5. **Audit artifacts and results.** Follow [PHASE2.md](PHASE2.md) to back up complete model run directories to persistent storage, verify SHA-256 inventories, reload models on held-out rows, and regenerate the lightweight reports. Treat a report as final only after its source model, metrics, preprocessing metadata, and backup have been checked. Neither the acquisition notebook nor a model command commits datasets or binaries to Git.
+5. **Run Phase 3 forecast-horizon and precursor experiments.** For example:
 
-6. **Run offline tests.** The tests use small synthetic fixtures and do not require SWAN-SF:
+   ```bash
+   # Short warning horizons (6h, 12h)
+   python short_horizon.py --split region_split --features baseline --models both
+
+   # Long warning horizons (24h, 48h)
+   python long_horizon.py --split time_split --features baseline_temporal --models both
+
+   # Systematic feature comparison across all horizons (6h, 12h, 24h, 48h)
+   python feature_comparison.py --split region_split
+   ```
+
+   Outputs are saved under `data/phase3/` with `config.json`, `metrics.json` (including TSS, HSS, confusion matrices, PR-AUC, and F1), `model.joblib`, and `status.json`. Summary reports are formatted into `reports/phase3/`. Add `--smoke-max-per-subset 100` for fast diagnostic checks.
+
+6. **Audit artifacts and results.** Follow [PHASE2.md](PHASE2.md) to back up complete model run directories to persistent storage, verify SHA-256 inventories, reload models on held-out rows, and regenerate the lightweight reports. Treat a report as final only after its source model, metrics, preprocessing metadata, and backup have been checked. Neither the acquisition notebook nor a model command commits datasets or binaries to Git.
+
+7. **Run offline tests.** The tests use small synthetic fixtures and do not require SWAN-SF:
 
    ```bash
    python -B -m unittest discover -s tests -v
    ```
+
 
 ## Limitations and next work
 
