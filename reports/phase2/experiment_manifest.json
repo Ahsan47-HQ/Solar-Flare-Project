@@ -1,0 +1,130 @@
+{
+  "project": "Solar-Flare-Project",
+  "phase": "Phase 2",
+  "created_at_utc": "2026-10-24T18:56:14.010155+00:00",
+  "branch": "Prasiddhi",
+  "git_commit": "60ba6b21dc2057dbfa5a62e7b284bc4a62bacf94",
+  "dataset_doi": "10.7910/DVN/EBCFKM",
+  "dataset_checksums": {},
+  "source_sha256": {
+    "classical_models.py": "1e972aebf5bbf47431a46528aaec34c99a500d3c39c5b3b49b78213a707daff3",
+    "xgboost_model.py": "7524c4f64e09b283b78ae95b60469c58fa23a2a2ba360d7589bdda6d414edf18",
+    "ann_model.py": "9c8d1f78ca38c34ec0d3630481fbb026807e313ddd650bbc4a57e93238245897",
+    "phase2_model_common.py": "b9fc9fdcf648e8d54c3cad6e65fb10a2df02d47528c1070799cd290ca27a2ba8",
+    "phase2_artifacts.py": "5a4dc49473c934e80b49f0163080807218f89377e4cac571b64ec24b54d63364",
+    "data_cleaning.py": "6b7a410a647dc4983e1b5e45d0c4d9e2cf623523480afaa8f5542b10dfafc8d0",
+    "temporal_features.py": "86e78a62f83179d59bebedf57f510cac844cb9184a1bab1ff5bc7b491bc024da"
+  },
+  "runs": [
+    {
+      "run_id": "20261024T174915Z_9fb61b61",
+      "artifact_path": "data\\phase2\\classical\\region_split\\baseline\\full\\logistic\\20261024T174915Z_9fb61b61",
+      "model": "logistic",
+      "split": "region_split",
+      "feature_set": "baseline",
+      "completion_status": "missing",
+      "reload_status": "not_run",
+      "inference_status": "not_run",
+      "limitations": [
+        "Run directory absent"
+      ]
+    },
+    {
+      "run_id": "20261024T175106Z_d3181de8",
+      "artifact_path": "data\\phase2\\classical\\region_split\\baseline\\full\\forest\\20261024T175106Z_d3181de8",
+      "model": "forest",
+      "split": "region_split",
+      "feature_set": "baseline",
+      "completion_status": "missing",
+      "reload_status": "not_run",
+      "inference_status": "not_run",
+      "limitations": [
+        "Run directory absent"
+      ]
+    },
+    {
+      "run_id": "20261024T175435Z_6f50f109",
+      "artifact_path": "data\\phase2\\classical\\region_split\\baseline_temporal\\full\\logistic\\20261024T175435Z_6f50f109",
+      "model": "logistic",
+      "split": "region_split",
+      "feature_set": "baseline_temporal",
+      "completion_status": "missing",
+      "reload_status": "not_run",
+      "inference_status": "not_run",
+      "limitations": [
+        "Run directory absent"
+      ]
+    },
+    {
+      "run_id": "20261024T180048Z_429d9907",
+      "artifact_path": "data\\phase2\\classical\\region_split\\baseline_temporal\\full\\forest\\20261024T180048Z_429d9907",
+      "model": "forest",
+      "split": "region_split",
+      "feature_set": "baseline_temporal",
+      "completion_status": "missing",
+      "reload_status": "not_run",
+      "inference_status": "not_run",
+      "limitations": [
+        "Run directory absent"
+      ]
+    },
+    {
+      "run_id": "20261024T180501Z_6260511c",
+      "artifact_path": "data\\phase2\\classical\\time_split\\baseline\\full\\logistic\\20261024T180501Z_6260511c",
+      "model": "logistic",
+      "split": "time_split",
+      "feature_set": "baseline",
+      "completion_status": "missing",
+      "reload_status": "not_run",
+      "inference_status": "not_run",
+      "limitations": [
+        "Run directory absent"
+      ]
+    },
+    {
+      "run_id": "20261024T180647Z_8d604d59",
+      "artifact_path": "data\\phase2\\classical\\time_split\\baseline\\full\\forest\\20261024T180647Z_8d604d59",
+      "model": "forest",
+      "split": "time_split",
+      "feature_set": "baseline",
+      "completion_status": "missing",
+      "reload_status": "not_run",
+      "inference_status": "not_run",
+      "limitations": [
+        "Run directory absent"
+      ]
+    },
+    {
+      "run_id": "20261024T181101Z_26bf580e",
+      "artifact_path": "data\\phase2\\classical\\time_split\\baseline_temporal\\full\\logistic\\20261024T181101Z_26bf580e",
+      "model": "logistic",
+      "split": "time_split",
+      "feature_set": "baseline_temporal",
+      "completion_status": "missing",
+      "reload_status": "not_run",
+      "inference_status": "not_run",
+      "limitations": [
+        "Run directory absent"
+      ]
+    },
+    {
+      "run_id": "20261024T181645Z_f283cb01",
+      "artifact_path": "data\\phase2\\classical\\time_split\\baseline_temporal\\full\\forest\\20261024T181645Z_f283cb01",
+      "model": "forest",
+      "split": "time_split",
+      "feature_set": "baseline_temporal",
+      "completion_status": "missing",
+      "reload_status": "not_run",
+      "inference_status": "not_run",
+      "limitations": [
+        "Run directory absent"
+      ]
+    }
+  ],
+  "artifact_inventory": "artifact_inventory.json",
+  "backup_summaries": [],
+  "artifact_checks_complete": false,
+  "technical_checks_complete": false,
+  "complete": false,
+  "completion_limitation": "Original Phase 2 experiment matrix is unavailable in this repository"
+}
