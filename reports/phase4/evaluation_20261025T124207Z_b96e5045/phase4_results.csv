@@ -1,0 +1,3 @@
+run_id,model,split,horizon_label,feature_set,mode,status,n_test,n_fl,fl_prevalence,threshold,threshold_source,fl_precision,fl_recall,fl_f1,nf_precision,nf_recall,nf_f1,macro_f1,weighted_f1,tn,fp,fn,tp,pr_auc_average_precision,roc_auc,tss,hss,run_dir,predictions_path,reason
+,,,,,,blocked,,,,,,,,,,,,,,,,,,,,,,"D:\Solar-Flare-Phase2\data\phase3, D:\Solar-Flare-Phase2\data\phase2",,No saved model runs found; restore Phase 3/Phase 2 run directories
+,,,,,,blocked,,,,,,,,,,,,,,,,,,,,,,D:\Solar-Flare-Phase2\data,,Phase 1 data directory is absent

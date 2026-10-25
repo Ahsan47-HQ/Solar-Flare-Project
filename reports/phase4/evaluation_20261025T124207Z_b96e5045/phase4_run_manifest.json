@@ -1,0 +1,47 @@
+{
+  "phase": "phase4",
+  "generated_at_utc": "2026-10-25T12:42:07.573361+00:00",
+  "repository": {
+    "branch": "Prasiddhi",
+    "commit": "ec257aea13bc0be4cdba6c4d9aa4707588a3cc5e"
+  },
+  "script_sha256": {
+    "phase4_common.py": "09cb23f0356e4aeadc95558758fbdf9afbd374a60f75fa2adb842d21aee5a94f",
+    "classification_metrics.py": "25968e3414c5453e99369d3e3e9b99c1b82db5bfcb7495ed47151b1ac927d57c",
+    "advanced_metrics.py": "e60aeccd55f04501c6d99cb73d6ffc9b1f94a4cc03486da84e6683c417b245b2"
+  },
+  "packages": {
+    "python": "3.12.4",
+    "numpy": "2.4.6",
+    "scikit_learn": "1.9.1"
+  },
+  "random_seed": 42,
+  "bootstrap_replicates": 100,
+  "data_dir": "D:\\Solar-Flare-Phase2\\data",
+  "run_roots": [
+    "D:\\Solar-Flare-Phase2\\data\\phase3",
+    "D:\\Solar-Flare-Phase2\\data\\phase2"
+  ],
+  "run_ids": [],
+  "artifacts": [],
+  "outputs": {
+    "phase4_results.csv": "D:\\Solar-Flare-Phase2\\reports\\phase4\\evaluation_20261025T124207Z_b96e5045\\phase4_results.csv",
+    "phase4_results.json": "D:\\Solar-Flare-Phase2\\reports\\phase4\\evaluation_20261025T124207Z_b96e5045\\phase4_results.json",
+    "phase4_summary.md": "D:\\Solar-Flare-Phase2\\reports\\phase4\\evaluation_20261025T124207Z_b96e5045\\phase4_summary.md",
+    "phase4_run_manifest.json": "D:\\Solar-Flare-Phase2\\reports\\phase4\\evaluation_20261025T124207Z_b96e5045\\phase4_run_manifest.json"
+  },
+  "test_status": "not_run_by_this_command",
+  "warnings": [
+    {
+      "run_dir": "D:\\Solar-Flare-Phase2\\data\\phase3, D:\\Solar-Flare-Phase2\\data\\phase2",
+      "status": "blocked",
+      "reason": "No saved model runs found; restore Phase 3/Phase 2 run directories"
+    },
+    {
+      "run_dir": "D:\\Solar-Flare-Phase2\\data",
+      "status": "blocked",
+      "reason": "Phase 1 data directory is absent"
+    }
+  ],
+  "scientific_limitation": "Phase 3 nominal horizons do not have separate target labels"
+}

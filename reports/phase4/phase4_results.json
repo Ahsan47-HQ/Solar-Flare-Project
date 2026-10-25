@@ -1,0 +1,24 @@
+{
+  "status": "incomplete_no_verified_runs",
+  "metric_definitions": {
+    "pr_auc_average_precision": "sklearn average_precision_score on continuous FL probabilities; not trapezoidal PR area",
+    "roc_auc": "sklearn roc_auc_score on continuous FL probabilities; null when one class is absent",
+    "tss": "TP/(TP+FN) + TN/(TN+FP) - 1; null if either class is absent",
+    "hss": "2*(TP*TN-FN*FP)/((TP+FN)*(FN+TN)+(TP+FP)*(FP+TN)); null if denominator is zero",
+    "confusion_matrix": "[[TN, FP], [FN, TP]] with rows true NF/FL and columns predicted NF/FL"
+  },
+  "results": [],
+  "comparisons": [],
+  "warnings": [
+    {
+      "run_dir": "[WindowsPath('D:/Solar-Flare-Phase2/data/phase3'), WindowsPath('D:/Solar-Flare-Phase2/data/phase2')]",
+      "status": "blocked",
+      "reason": "No saved model runs found; restore Phase 3/Phase 2 run directories"
+    },
+    {
+      "run_dir": "D:\\Solar-Flare-Phase2\\data",
+      "status": "blocked",
+      "reason": "Phase 1 data directory is absent"
+    }
+  ]
+}
