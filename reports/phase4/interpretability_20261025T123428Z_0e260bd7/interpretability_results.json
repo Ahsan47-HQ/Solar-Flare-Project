@@ -1,0 +1,28 @@
+{
+  "status": "incomplete_no_verified_runs",
+  "generated_at_utc": "2026-10-25T12:34:28.504659+00:00",
+  "repository": {
+    "branch": "Prasiddhi",
+    "commit": "ec257aea13bc0be4cdba6c4d9aa4707588a3cc5e"
+  },
+  "seed": 42,
+  "sample_limits": {
+    "shap_evaluation": 40,
+    "shap_background": 20,
+    "pattern_per_class": 1000
+  },
+  "results": [],
+  "warnings": [
+    {
+      "run_dir": "[WindowsPath('D:/Solar-Flare-Phase2/data/phase3'), WindowsPath('D:/Solar-Flare-Phase2/data/phase2')]",
+      "status": "blocked",
+      "reason": "No saved model runs found; restore Phase 3/Phase 2 artifacts"
+    },
+    {
+      "run_dir": "D:\\Solar-Flare-Phase2\\data",
+      "status": "blocked",
+      "reason": "Phase 1 data directory is absent"
+    }
+  ],
+  "scientific_limitation": "Phase 3 horizon labels reuse the Phase 1 binary target; class patterns are not lead-time precursors"
+}

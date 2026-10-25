@@ -1,0 +1,15 @@
+{
+  "results": [],
+  "warnings": [
+    {
+      "run_dir": "[WindowsPath('D:/Solar-Flare-Phase2/data/phase3'), WindowsPath('D:/Solar-Flare-Phase2/data/phase2')]",
+      "status": "blocked",
+      "reason": "No saved run directories found; restore Phase 3/Phase 2 artifacts"
+    },
+    {
+      "run_dir": "D:\\Solar-Flare-Phase2\\data",
+      "status": "blocked",
+      "reason": "Phase 1 data directory is absent"
+    }
+  ]
+}
