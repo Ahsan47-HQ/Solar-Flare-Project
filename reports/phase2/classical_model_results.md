@@ -1,38 +1,26 @@
-# Phase 2 model results
+# Phase 2: verified full-data model results
 
-Generated from saved config.json, metrics.json, status.json and model files only.
-An absent run has blank metrics. Reported terminal numbers are not substituted.
+M/X flare peak in the next 24 hours; 12-hour magnetic observation windows. The random split is a leakage diagnostic only. The decision threshold was selected on validation F1.
 
-FL is M/X-class and positive (1); NF is negative (0). The documented full dataset has
-331,185 windows, 6,234 FL (1.88%) and 324,951 NF; these counts are not reverified
-unless Phase 1 files are available to the audit. Baseline has 24 magnetic features;
-baseline_temporal has 144. Region split keeps regions separate; time split trains
-on partitions 1–3, validates on 4 and tests on 5. Random split is diagnostic only.
-Normalization is fitted by Phase 1 on each split's training rows. Validation selects
-the F1-maximizing decision threshold; test labels do not select it. Average precision
-(AP) summarizes the precision–recall curve and is not accuracy. Recall describes the
-share of FL windows found; precision describes how many FL predictions are correct.
-F1 combines precision and recall. ROC-AUC and confusion matrices are in the CSV.
-No statistical significance or universal model ranking is inferred.
+| Split | Features | Model | Test N | FL | AP | Recall | Precision | TSS | HSS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| random_split | baseline | xgboost | 44980 | 946 | 0.551 | 0.617 | 0.470 | 0.602 | 0.522 |
+| region_split | baseline | ann | 45757 | 939 | 0.444 | 0.411 | 0.401 | 0.398 | 0.393 |
+| region_split | baseline | forest | 45757 | 939 | 0.264 | 0.292 | 0.354 | 0.281 | 0.307 |
+| region_split | baseline | logistic | 45757 | 939 | 0.393 | 0.490 | 0.332 | 0.469 | 0.381 |
+| region_split | baseline | xgboost | 45757 | 939 | 0.421 | 0.354 | 0.409 | 0.343 | 0.367 |
+| region_split | baseline_temporal | ann | 45757 | 939 | 0.393 | 0.420 | 0.432 | 0.408 | 0.414 |
+| region_split | baseline_temporal | forest | 45757 | 939 | 0.276 | 0.249 | 0.328 | 0.239 | 0.270 |
+| region_split | baseline_temporal | logistic | 45757 | 939 | 0.388 | 0.440 | 0.360 | 0.423 | 0.382 |
+| region_split | baseline_temporal | xgboost | 45757 | 939 | 0.423 | 0.317 | 0.491 | 0.310 | 0.375 |
+| time_split | baseline | ann | 67279 | 990 | 0.391 | 0.203 | 0.432 | 0.199 | 0.269 |
+| time_split | baseline | forest | 67279 | 990 | 0.342 | 0.564 | 0.337 | 0.547 | 0.411 |
+| time_split | baseline | logistic | 67279 | 990 | 0.458 | 0.425 | 0.517 | 0.419 | 0.460 |
+| time_split | baseline | xgboost | 67279 | 990 | 0.455 | 0.530 | 0.410 | 0.519 | 0.453 |
+| time_split | baseline_temporal | ann | 67279 | 990 | 0.428 | 0.232 | 0.565 | 0.230 | 0.323 |
+| time_split | baseline_temporal | forest | 67279 | 990 | 0.370 | 0.654 | 0.325 | 0.633 | 0.423 |
+| time_split | baseline_temporal | logistic | 67279 | 990 | 0.487 | 0.374 | 0.575 | 0.370 | 0.446 |
+| time_split | baseline_temporal | xgboost | 67279 | 990 | 0.487 | 0.447 | 0.472 | 0.440 | 0.451 |
 
-| Run | Model | Split | Features | Val AP | Val P/R/F1 | Threshold | Test AP | Test P/R/F1 | Test ROC-AUC | Reload |
-| --- | --- | --- | --- | ---: | --- | ---: | ---: | --- | ---: | --- |
-| 20261024T174915Z_9fb61b61 | logistic | region_split | baseline | — | —/—/— | — | — | —/—/— | — | not_run |
-| 20261024T175106Z_d3181de8 | forest | region_split | baseline | — | —/—/— | — | — | —/—/— | — | not_run |
-| 20261024T175435Z_6f50f109 | logistic | region_split | baseline_temporal | — | —/—/— | — | — | —/—/— | — | not_run |
-| 20261024T180048Z_429d9907 | forest | region_split | baseline_temporal | — | —/—/— | — | — | —/—/— | — | not_run |
-| 20261024T180501Z_6260511c | logistic | time_split | baseline | — | —/—/— | — | — | —/—/— | — | not_run |
-| 20261024T180647Z_8d604d59 | forest | time_split | baseline | — | —/—/— | — | — | —/—/— | — | not_run |
-| 20261024T181101Z_26bf580e | logistic | time_split | baseline_temporal | — | —/—/— | — | — | —/—/— | — | not_run |
-| 20261024T181645Z_f283cb01 | forest | time_split | baseline_temporal | — | —/—/— | — | — | —/—/— | — | not_run |
-
-## Within-configuration comparison
-
-Unavailable until at least two saved runs in one configuration are verified.
-
-Metrics above are only final after checking the saved metrics files and
-held-out inference. Model files are expected under gitignored data/phase2/;
-Phase 1 arrays are expected under gitignored data/phase1/.
-See experiment_manifest.json, artifact_inventory.json and model_reload_verification.md.
-Reproduce with classical_models.py, xgboost_model.py or ann_model.py using the recorded
-split, feature set, seed and parameters. Existing completed runs should be reused.
+All 17 runs passed model reload, data-hash, held-out ID, and metric checks. Detailed configurations and probabilities are under `data/rebuild/runs/phase2/`.
+The random-split AP must not be treated as independent-region generalization.

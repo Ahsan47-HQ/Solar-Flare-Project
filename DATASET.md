@@ -22,9 +22,11 @@ use the manifest columns.
 
 `FL` means M/X-class in the supplied binary task; `NF` includes flare-quiet and
 B/C-class examples. The supplied instances use the dataset's existing slicing and
-labeling setup. For other horizons, construct new windows and labels from the full
-series. Decide whether a horizon means *within H hours* or *at least H hours of
-lead time* before creating those labels; these are different tasks.
+labeling setup. For other horizons, construct new labels from the full series.
+The current Phase 2–4 rebuild defines H as a minimum lead to an M/X flare
+**peak**, with a fixed 24-hour validity interval `(issue+H, issue+H+24h]`.
+See [REBUILD.md](REBUILD.md) and `data/phase2/horizon_targets_report.json`
+for coverage and validation.
 
 For all models, select samples using `splits.csv` and fit imputation, scaling,
 feature selection, resampling, and tuning on training data only. Use the random

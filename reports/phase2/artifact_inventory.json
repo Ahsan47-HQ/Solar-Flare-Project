@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\random_split\\baseline\\xgboost",
+    "model_file": "model.xgb.json",
+    "model_sha256": "3d7dded96f6757ef96be1f62787ab01c676d82040932e6aef54ce72f64a9d170",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline\\ann",
+    "model_file": "model.keras",
+    "model_sha256": "f69daa9c964a9184caf63b85626b4c30ff10c81f19ad7c1c22d2940de4d32465",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline\\forest",
+    "model_file": "model.joblib",
+    "model_sha256": "d639beb1acfc8c0f362744a1089e25f6aaffe10730687242b0d92a3b2b5af47e",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline\\logistic",
+    "model_file": "model.joblib",
+    "model_sha256": "65a92e98ce9a7a7c86361ac16f4b6fe04a984ae4950ff6bb120b8958c59e53c5",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline\\xgboost",
+    "model_file": "model.xgb.json",
+    "model_sha256": "23d022b0cd5491c41e407a48ae5b502ff29aeb77d8500f9dc2f52c04d14b25a0",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline_temporal\\ann",
+    "model_file": "model.keras",
+    "model_sha256": "84b70e89ba46004e48f5931f9e471a41bf95702db9a3b8c0651d7fbc93b282d7",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline_temporal\\forest",
+    "model_file": "model.joblib",
+    "model_sha256": "928cf413cd7e332f38730ed20b56d179ee0d8069b16a773015d60373335d8818",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline_temporal\\logistic",
+    "model_file": "model.joblib",
+    "model_sha256": "76c03c40e8e365ae839c26c48a6569bfe65240ef719155564a1a49544801c741",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline_temporal\\xgboost",
+    "model_file": "model.xgb.json",
+    "model_sha256": "9a5b7115fadcbbf5c179bdbce11358d1d4a69761a8c6635f4a7034c1eafdd936",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline\\ann",
+    "model_file": "model.keras",
+    "model_sha256": "bbf80f304ad347473de56f9d1dbf93d968486d561f616e4c7922e522164e2154",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline\\forest",
+    "model_file": "model.joblib",
+    "model_sha256": "b3ec70414f87271304a56641f97dfdd3b68cdacfc8430464b624cb6dccecd300",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline\\logistic",
+    "model_file": "model.joblib",
+    "model_sha256": "6a0f277791fd5bc3158a2741c0f88a41be722bd4abb4477698915e383471823e",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline\\xgboost",
+    "model_file": "model.xgb.json",
+    "model_sha256": "da9060ade01913b2cff36f21a9c43d2e5312213a626172fb5c2803193ef94ff9",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline_temporal\\ann",
+    "model_file": "model.keras",
+    "model_sha256": "5595725ad7b6b7becb660d21ebe81b0d1d8b340bfc5152a559d572c2080f0719",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline_temporal\\forest",
+    "model_file": "model.joblib",
+    "model_sha256": "416db2b2bff2cdd59e0cf6d4e0a8e20cfd87ff8245cc4a74adc375a775b8bdfb",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline_temporal\\logistic",
+    "model_file": "model.joblib",
+    "model_sha256": "296d7df89677f1af671c6841a4743ea8054431606cd9cfca450e80bd4fb59814",
+    "reload_status": "verified"
+  },
+  {
+    "run_dir": "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline_temporal\\xgboost",
+    "model_file": "model.xgb.json",
+    "model_sha256": "affeb2659473796257d3d223f3d36cdd5f6534b03aa9a47efefeee8d318ba394",
+    "reload_status": "verified"
+  }
+]
