@@ -1,47 +1,42 @@
 {
   "phase": "phase4",
-  "generated_at_utc": "2026-10-25T12:34:13.654298+00:00",
-  "repository": {
-    "branch": "Prasiddhi",
-    "commit": "ec257aea13bc0be4cdba6c4d9aa4707588a3cc5e"
-  },
-  "script_sha256": {
-    "phase4_common.py": "09cb23f0356e4aeadc95558758fbdf9afbd374a60f75fa2adb842d21aee5a94f",
-    "classification_metrics.py": "01e5a4895b888111d54450f9451665d96e0030c88fed9ba3eeef3f5777a5cb7c",
-    "advanced_metrics.py": "6a8f36a499ea2f8f68710c29bd33bd794f1e4fd96c00b0c34328c7ee5d105955"
-  },
-  "packages": {
-    "python": "3.12.4",
-    "numpy": "2.4.6",
-    "scikit_learn": "1.9.1"
-  },
-  "random_seed": 42,
-  "bootstrap_replicates": 100,
-  "data_dir": "D:\\Solar-Flare-Phase2\\data",
-  "run_roots": [
-    "D:\\Solar-Flare-Phase2\\data\\phase3",
-    "D:\\Solar-Flare-Phase2\\data\\phase2"
+  "source": "verified rebuild",
+  "verified_run_count": 33,
+  "rejected_run_count": 0,
+  "run_directories": [
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\random_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline\\ann",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline\\forest",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline\\logistic",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline_temporal\\ann",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline_temporal\\forest",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline_temporal\\logistic",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\region_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline\\ann",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline\\forest",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline\\logistic",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline_temporal\\ann",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline_temporal\\forest",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline_temporal\\logistic",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase2\\lead_0h\\time_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_12h\\region_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_12h\\region_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_12h\\time_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_12h\\time_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_24h\\region_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_24h\\region_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_24h\\time_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_24h\\time_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_48h\\region_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_48h\\region_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_48h\\time_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_48h\\time_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_6h\\region_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_6h\\region_split\\baseline_temporal\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_6h\\time_split\\baseline\\xgboost",
+    "D:\\Solar_Flare_Detection\\data\\rebuild\\runs\\phase3\\lead_6h\\time_split\\baseline_temporal\\xgboost"
   ],
-  "run_ids": [],
-  "artifacts": [],
-  "outputs": {
-    "phase4_results.csv": "D:\\Solar-Flare-Phase2\\reports\\phase4\\phase4_results.csv",
-    "phase4_results.json": "D:\\Solar-Flare-Phase2\\reports\\phase4\\phase4_results.json",
-    "phase4_summary.md": "D:\\Solar-Flare-Phase2\\reports\\phase4\\phase4_summary.md",
-    "phase4_run_manifest.json": "D:\\Solar-Flare-Phase2\\reports\\phase4\\phase4_run_manifest.json"
-  },
-  "test_status": "not_run_by_this_command",
-  "warnings": [
-    {
-      "run_dir": "[WindowsPath('D:/Solar-Flare-Phase2/data/phase3'), WindowsPath('D:/Solar-Flare-Phase2/data/phase2')]",
-      "status": "blocked",
-      "reason": "No saved model runs found; restore Phase 3/Phase 2 run directories"
-    },
-    {
-      "run_dir": "D:\\Solar-Flare-Phase2\\data",
-      "status": "blocked",
-      "reason": "Phase 1 data directory is absent"
-    }
-  ],
-  "scientific_limitation": "Phase 3 nominal horizons do not have separate target labels"
+  "label_definition": "M/X flare peak in (issue+lead, issue+lead+24h]"
 }

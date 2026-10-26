@@ -1,41 +1,16 @@
-# Phase 3 Long-Horizon Forecast Results (24h, 48h)
+# Phase 3: verified long lead-time results
 
-Generated from saved `config.json`, `metrics.json`, `status.json`, and model artifacts under `data/phase3/long_horizon/`.
-An unexecuted run has blank metrics (`—`). Reported terminal numbers are not substituted.
+A positive label is an M/X flare peak in `(issue+H, issue+H+24h]`. All four H values use the same eligible windows. XGBoost was trained with bounded CUDA resources.
 
-## Methodology and Metric Definitions
-- **Warning Horizons**: 24 hours (`24h`) and 48 hours (`48h`) early-warning windows.
-- **Label Definition**: `FL` is M/X-class flare (positive class, 1); `NF` is non-flaring / B/C-class (negative class, 0).
-- **Class Imbalance**: Documented dataset contains 331,185 total windows, 6,234 `FL` instances (1.88% prevalence).
-- **Features**: `baseline` (24 raw magnetic features); `baseline_temporal` (144 features including 120 temporal derivatives and window moments).
-- **Generalization Splits**:
-  - `region_split`: active regions are partitioned independently across train/val/test to prevent spatial contamination.
-  - `time_split`: chronological partitions 1–3 for train, partition 4 for validation, partition 5 for held-out test.
-- **Decision Threshold**: Tuned on validation split to maximize $F_1$ score; test labels are strictly reserved for final held-out scoring.
-- **Skill Scores**:
-  - **TSS (True Skill Statistic)**: $\text{POD} - \text{POFD} = \frac{TP}{TP+FN} - \frac{FP}{FP+TN}$ (ranges $[-1.0, +1.0]$, unaffected by 1.88% class prevalence).
-  - **HSS (Heidke Skill Score)**: $\frac{2(TP \cdot TN - FP \cdot FN)}{(TP+FN)(FN+TN) + (TP+FP)(FP+TN)}$ (evaluates accuracy improvement over random chance).
+| Lead | Split | Features | Test N | FL | FL regions | AP | Recall | TSS | HSS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 24 | region_split | baseline | 32144 | 728 | 21 | 0.321 | 0.360 | 0.344 | 0.336 |
+| 24 | region_split | baseline_temporal | 32144 | 728 | 21 | 0.326 | 0.254 | 0.244 | 0.286 |
+| 24 | time_split | baseline | 46395 | 881 | 20 | 0.347 | 0.453 | 0.435 | 0.369 |
+| 24 | time_split | baseline_temporal | 46395 | 881 | 20 | 0.369 | 0.485 | 0.466 | 0.384 |
+| 48 | region_split | baseline | 32144 | 688 | 18 | 0.259 | 0.244 | 0.235 | 0.283 |
+| 48 | region_split | baseline_temporal | 32144 | 688 | 18 | 0.260 | 0.480 | 0.435 | 0.248 |
+| 48 | time_split | baseline | 46395 | 954 | 20 | 0.359 | 0.460 | 0.434 | 0.321 |
+| 48 | time_split | baseline_temporal | 46395 | 954 | 20 | 0.342 | 0.379 | 0.357 | 0.294 |
 
-## Test-Set Evaluation Matrix
-
-| Split | Horizon | Features | Model | PR-AUC | FL Recall | FL Precision | FL F1 | TSS | HSS | Run Identifier |
-|---|---|---|---|---|---|---|---|---|---|---|
-| region_split | 24h | baseline | logistic | — | — | — | — | — | — | pending |
-| region_split | 24h | baseline | forest | — | — | — | — | — | — | pending |
-| region_split | 24h | baseline_temporal | logistic | — | — | — | — | — | — | pending |
-| region_split | 24h | baseline_temporal | forest | — | — | — | — | — | — | pending |
-| region_split | 48h | baseline | logistic | — | — | — | — | — | — | pending |
-| region_split | 48h | baseline | forest | — | — | — | — | — | — | pending |
-| region_split | 48h | baseline_temporal | logistic | — | — | — | — | — | — | pending |
-| region_split | 48h | baseline_temporal | forest | — | — | — | — | — | — | pending |
-| time_split | 24h | baseline | logistic | — | — | — | — | — | — | pending |
-| time_split | 24h | baseline | forest | — | — | — | — | — | — | pending |
-| time_split | 24h | baseline_temporal | logistic | — | — | — | — | — | — | pending |
-| time_split | 24h | baseline_temporal | forest | — | — | — | — | — | — | pending |
-| time_split | 48h | baseline | logistic | — | — | — | — | — | — | pending |
-| time_split | 48h | baseline | forest | — | — | — | — | — | — | pending |
-| time_split | 48h | baseline_temporal | logistic | — | — | — | — | — | — | pending |
-| time_split | 48h | baseline_temporal | forest | — | — | — | — | — | — | pending |
-
----
-*Phase 3 long-horizon evaluation. Generated artifacts expected under gitignored `data/phase3/long_horizon/`.*
+The target is peak time, so this does not directly measure lead to flare onset. The 48-hour cohort excludes windows without complete future coverage.

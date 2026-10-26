@@ -1,0 +1,133 @@
+{
+  "purpose": "validation-only bounded sensitivity; no test-set model selection",
+  "feature_set": "baseline",
+  "seed": 42,
+  "results": [
+    {
+      "split": "region_split",
+      "model": "xgboost",
+      "depth": 2,
+      "validation_ap": 0.4477230831320318,
+      "best_iteration": 75,
+      "train_n": 209234,
+      "validation_n": 44184
+    },
+    {
+      "split": "region_split",
+      "model": "xgboost",
+      "depth": 3,
+      "validation_ap": 0.4369846442807753,
+      "best_iteration": 54,
+      "train_n": 209234,
+      "validation_n": 44184
+    },
+    {
+      "split": "region_split",
+      "model": "xgboost",
+      "depth": 4,
+      "validation_ap": 0.4358187338983239,
+      "best_iteration": 32,
+      "train_n": 209234,
+      "validation_n": 44184
+    },
+    {
+      "split": "region_split",
+      "model": "ann",
+      "units": [
+        16,
+        8
+      ],
+      "validation_ap": 0.2770175983801616,
+      "epochs": 4,
+      "train_n": 209234,
+      "validation_n": 44184
+    },
+    {
+      "split": "region_split",
+      "model": "ann",
+      "units": [
+        32,
+        16
+      ],
+      "validation_ap": 0.31828927544156427,
+      "epochs": 3,
+      "train_n": 209234,
+      "validation_n": 44184
+    },
+    {
+      "split": "region_split",
+      "model": "ann",
+      "units": [
+        64,
+        32
+      ],
+      "validation_ap": 0.3672187907257455,
+      "epochs": 8,
+      "train_n": 209234,
+      "validation_n": 44184
+    },
+    {
+      "split": "time_split",
+      "model": "xgboost",
+      "depth": 2,
+      "validation_ap": 0.5438019651295778,
+      "best_iteration": 70,
+      "train_n": 185338,
+      "validation_n": 46558
+    },
+    {
+      "split": "time_split",
+      "model": "xgboost",
+      "depth": 3,
+      "validation_ap": 0.5497694896703358,
+      "best_iteration": 58,
+      "train_n": 185338,
+      "validation_n": 46558
+    },
+    {
+      "split": "time_split",
+      "model": "xgboost",
+      "depth": 4,
+      "validation_ap": 0.5406948996757909,
+      "best_iteration": 58,
+      "train_n": 185338,
+      "validation_n": 46558
+    },
+    {
+      "split": "time_split",
+      "model": "ann",
+      "units": [
+        16,
+        8
+      ],
+      "validation_ap": 0.5936712108543396,
+      "epochs": 6,
+      "train_n": 185338,
+      "validation_n": 46558
+    },
+    {
+      "split": "time_split",
+      "model": "ann",
+      "units": [
+        32,
+        16
+      ],
+      "validation_ap": 0.5714118819648177,
+      "epochs": 4,
+      "train_n": 185338,
+      "validation_n": 46558
+    },
+    {
+      "split": "time_split",
+      "model": "ann",
+      "units": [
+        64,
+        32
+      ],
+      "validation_ap": 0.5757757478206381,
+      "epochs": 4,
+      "train_n": 185338,
+      "validation_n": 46558
+    }
+  ]
+}
