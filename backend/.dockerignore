@@ -1,0 +1,7 @@
+data/
+models/
+tests/
+__pycache__/
+*.pyc
+convert_models_onnx.py
+package_artifacts.py

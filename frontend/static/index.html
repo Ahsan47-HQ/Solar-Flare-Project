@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#171b1d">
+    <meta name="description" content="Explore verified SWAN-SF solar flare forecasts, experiments, and model signals.">
+    <title>Helion — Solar flare forecasting</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/config.js" defer></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <a class="brand" href="#overview" aria-label="Helion overview">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span class="brand-copy"><strong>HELION</strong><small>MODEL OBSERVATORY</small></span>
+        </a>
+        <div class="sidebar-rule"></div>
+        <div class="nav-group-label">WORKSPACE</div>
+        <nav class="sidebar-nav" id="navigation">
+          <a href="#overview" data-route="overview"><span>Overview</span><span class="nav-arrow">↗</span></a>
+          <a href="#forecast" data-route="forecast"><span>Forecast studio</span><span class="nav-arrow">↗</span></a>
+          <a href="#experiments" data-route="experiments"><span>Experiments</span><span class="nav-arrow">↗</span></a>
+          <a href="#data" data-route="data"><span>Data & method</span><span class="nav-arrow">↗</span></a>
+          <a href="#signals" data-route="signals"><span>Model signals</span><span class="nav-arrow">↗</span></a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="sidebar-mini-label">WHAT THIS MODEL ESTIMATES</div>
+          <p>An M/X flare <em>peak</em> in a fixed 24-hour interval after the selected lead.</p>
+          <span class="sidebar-version">SWAN-SF / VERIFIED REBUILD</span>
+        </div>
+      </aside>
+
+      <div class="main-shell">
+        <header class="topbar">
+          <div class="topbar-left"><span class="topbar-kicker">SPACE WEATHER / RESEARCH TOOL</span><span class="topbar-divider"></span><span id="current-page">Overview</span></div>
+          <div class="topbar-right"><span class="live-dot" aria-hidden="true"></span><span id="system-status">Connecting to saved models</span><span class="topbar-clock" id="clock"></span></div>
+        </header>
+        <main id="page" tabindex="-1" aria-live="polite"><div class="loading-state"><span class="loading-sun"></span><p>Loading the observatory</p></div></main>
+        <footer class="site-footer"><span>HELION <span class="footer-separator">/</span> RETROSPECTIVE MODEL OBSERVATORY</span><span>Built around verified SWAN-SF artifacts</span></footer>
+      </div>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

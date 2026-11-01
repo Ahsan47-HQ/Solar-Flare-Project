@@ -1,4 +1,7 @@
 .sfd/
 *.tar.gz
 data/
+backend/data/
 __pycache__/
+generate_final_report.py
+reports/final
