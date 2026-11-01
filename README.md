@@ -1,6 +1,6 @@
 # Solar flare forecasting with SWAN-SF
 
-This repository contains a completed local rebuild of Phases 2–4 on the extracted SWAN-SF data. Phase 1 preprocessing and its shared arrays were preserved. All three teammates should use the same `data/phase1/` arrays, `data/phase2/horizon_targets.npy`, and split assignments. Data and model binaries are ignored by Git and remain on this machine.
+This repository contains a completed local rebuild of Phases 2–4 on the extracted SWAN-SF data. Phase 1 preprocessing and its shared arrays were preserved. All three teammates should use the same `data/phase1/` arrays, `data/phase2/horizon_targets.npy`, and split assignments. The full dataset and training outputs remain gitignored; the web app can package the saved inference artifacts separately.
 
 ## Current results
 
@@ -26,6 +26,8 @@ From `D:\Solar_Flare_Detection` in PowerShell, with the existing `.sfd` environm
 `run_rebuild_matrix.py` resumes completed configurations and trains one process at a time. It uses bounded CUDA XGBoost settings on the RTX 4050 and trains the ANN on CPU because this native Windows TensorFlow build does not expose CUDA. `phase2_sensitivity.py` records separate validation-only depth and architecture experiments. Rebuilding labels after training changes the input hash and requires rerunning the model matrix and evaluation. See [REBUILD.md](REBUILD.md) for the full resource settings and validation procedure.
 
 ## Project files
+
+The [Helion web app](DEPLOYMENT.md) has a static frontend and a separate FastAPI service in `frontend/` and `backend/`. Run `docker compose up --build`, then open `http://localhost:8080`. Its compact ONNX inference bundle is separate from the gitignored training dataset.
 
 | Phase | Current entry points | Main outputs |
 | --- | --- | --- |
